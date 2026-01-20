@@ -112,35 +112,43 @@ Příklad:
 # Cvičení
 1. Seřaďte `postavy.txt` podle abecedy 
 
-``` sort postavy.txt```
-
-(➡️ seřadí celý soubor podle prvního znaku na řádku (ID jako text).)
+``` sort postavy.txt``` (➡️ seřadí celý soubor podle prvního znaku na řádku (ID jako text).)
 
 2. Následně podle abecedně podle jména postavy (5. sloupec)
 
-```sort -t';' -k5 kouzla.txt```
+```sort -t';' -k2 postavy.txt```
 
 3. Seřaďte postavy podle síly jejich schopností (4. sloupec) nejprve vzestupně a následně sestupně)
 
 ```
-sort -t';' -k4 -n kouzla.txt 
-sort -t';' -k4 -n -r kouzla.txt
+sort -t';' -k4 -n schopnosti.txt 
+sort -t';' -k4 -n -r schopnosti.txt
 ```
-4. vypište pouze názvy postav (sloupec 5)
+4. vypište pouze názvy postav (sloupec 2)
 
 ```cut -d";" -f5 postavy.txt```
 
 4. vypište pouze názvy postav, schopnost a typ (sloupece 2,3 a 5)
 
-```cut -d";" -f2,3,5 postavy.txt```
+```cut -d";" -f2,3,5 schopnosti.txt```
 
 5. vypište pouze názvy postav (sloupec 5) bez duplicit
 
 ```cut -d";" -f5 postavy.txt | uniq```
 
-6. Kolik je typů kouzel.
+6. Kolik je typů kouzel (sloupec 3). 
 
-``` cut -d";" -f3 postavy.txt | sort | uniq -c ```
+``` cut -d";" -f3 schopnosti.txt | sort | uniq```
+``` cut -d";" -f3 schopnosti.txt | sort | uniq -c```
+
+7. Spoj soubory `postavy.txt` a `schopnosti.txt` použij středník `;` jako oddělovač
+
+```paste -d"," postavy.txt schopnosti.txt```
+
+7. Pojďme odstranit některé duplicitní sloupce. Spojíme `postavy.txt` a spojíme je se sloupci 2,3,a 4 ze `schopnosti.txt`
+
+```paste -d"," postavy.txt <(cut -d';' -f2,3,4 schopnosti.txt)```
+
 
 
 
