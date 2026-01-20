@@ -108,3 +108,43 @@ Příklad:
 `tr 'a-z' 'A-Z'`
 
 `tr -d '_'`
+----
+# Cvičení
+1. Seřaďte `postavy.txt` podle abecedy 
+
+``` sort postavy.txt```
+
+(➡️ seřadí celý soubor podle prvního znaku na řádku (ID jako text).)
+
+2. Následně podle abecedně podle jména postavy (5. sloupec)
+
+```sort -t';' -k5 kouzla.txt```
+
+3. Seřaďte postavy podle síly jejich schopností (4. sloupec) nejprve vzestupně a následně sestupně)
+
+```
+sort -t';' -k4 -n kouzla.txt 
+sort -t';' -k4 -n -r kouzla.txt
+```
+4. vypište pouze názvy postav (sloupec 5)
+
+```cut -d";" -f5 postavy.txt```
+
+4. vypište pouze názvy postav, schopnost a typ (sloupece 2,3 a 5)
+
+```cut -d";" -f2,3,5 postavy.txt```
+
+5. vypište pouze názvy postav (sloupec 5) bez duplicit
+
+```cut -d";" -f5 postavy.txt | uniq```
+
+6. Kolik je typů kouzel.
+
+``` cut -d";" -f3 postavy.txt | sort | uniq -c ```
+
+
+
+
+
+
+
