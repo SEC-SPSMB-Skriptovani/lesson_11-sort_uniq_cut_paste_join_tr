@@ -1,4 +1,4 @@
-# Lekce 11 - sort uniq cut paste join tr
+# Lekce 11 - sort uniq cut paste join tr
 
 ## sort – třídění řádků
 Seřadí řádky vstupu (abecedně nebo číselně).
