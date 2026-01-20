@@ -1,0 +1,30 @@
+1;Jindrich;Houzevnaty bojovnik s mecem a silnou vuli
+2;Radzig_Kobyla;Zkuseny velitel, strateg a autorita
+3;Hanus_z_Lipy;Temperamentni, hrdy a charismaticky slechtic
+4;Divis_z_Talmberka;Rozvazny pan s citem pro diplomacii
+5;Markvart_z_Aulitz;Chladny, vypocitavy a nemilosrdny vojevudce
+6;Petr_Pisek;Pragmaticky mestsky spravce se smyslem pro poradek
+7;Jan_Ptacek;Mlady slechtic, odvazny ale nerozvazny
+8;Theresa;Odvazna a samostatna zena se silnym moralnim kompasem
+9;Svatopluk;Zkuseny lukostrelec a stopar, tichy a precizni
+10;Katerina;Lazebnice s bylinkami, laskava a pozorna k detailu
+11;Viktor;Zdravy a silny kovař, mistr v opravach zbrani
+12;Bohuslav;Myslivec a zverinovy znalec, klidny a trpelivy
+13;Zdenek;Mladý alchymista, zvědavý a trochu roztržitý
+14;Eliška;Moudrá jeptiška, zklidňující a soucitná
+15;Marek;Zkušený obchodník, vyjednavac a pragmatik
+16;Jana;Tanečnice a bavička, rychlá a vtipná
+17;Václav;Hrdý rytíř, ctihodný a neústupný
+18;Bohunka;Znalá bylinkářka, tichá a pozoruhodně odolná
+19;Ondřej;Mladý šermíř, ambiciózní a soutěživý
+20;Ludmila;Starostlivá hospodyně, organizovaná a pečlivá
+21;Šimon;Zvědavý kronikář, píše a sbírá příběhy
+22;Rudolf;Zkušený voják, tvrdý a loajální
+23;Miloslav;Tichý mnich, meditativní a učený
+24;Zora;Cestovatelka a průvodkyně, odvážná a bystrá
+25;Jaromír;Mistr lukostřelby, trénuje mladé rekruty
+26;Běla;Zručná tkadlena, trpělivá a pečlivá
+27;Kryštof;Mladý kovářův učeň, pracovitý a učenlivý
+28;Alena;Znalá léčitelka, empatická a klidná
+29;Vojtěch;Hbitý zloděj, mazaný a rychlý
+30;Dobroslav;Starý moudrý vesnický rádce, klidný a rozvážný
