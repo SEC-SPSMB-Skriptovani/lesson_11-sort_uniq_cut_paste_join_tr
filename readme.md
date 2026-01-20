@@ -111,56 +111,95 @@ Příklad:
 
 ----
 # Cvičení
-1. Seřaďte `postavy.txt` podle abecedy 
 
-``` sort postavy.txt``` (➡️ seřadí celý soubor podle prvního znaku na řádku (ID jako text).)
-
-2. Následně podle abecedně podle jména postavy (5. sloupec)
-
-```sort -t';' -k2 postavy.txt```
-
-3. Seřaďte postavy podle síly jejich schopností (4. sloupec) nejprve vzestupně a následně sestupně)
-
+## 1) Seřaďte `postavy.txt` podle abecedy
+```bash
+sort postavy.txt
 ```
-sort -t';' -k4 -n schopnosti.txt 
+➡️ Seřadí celý soubor podle prvního znaku na řádku (ID jako text).
+
+---
+
+## 2) Seřaďte podle jména postavy (2. sloupec)
+```bash
+sort -t';' -k2 postavy.txt
+```
+
+---
+
+## 3) Seřaďte postavy podle síly jejich schopností (4. sloupec)
+### vzestupně
+```bash
+sort -t';' -k4 -n schopnosti.txt
+```
+
+### sestupně
+```bash
 sort -t';' -k4 -n -r schopnosti.txt
 ```
-4. vypište pouze názvy postav (sloupec 2)
 
-```cut -d";" -f5 postavy.txt```
+---
 
-
-4. Ze souboru `schopnosti.txt` vypište pouze názvy postav (sloupec 5) bez duplicit
-
-```cut -d";" -f5 schopnosti.txt | uniq```
-
-5. Ze souboru `schopnosti.txt` vypište  názvy postav schopnost a typ (sloupece 2,3 a 5)
-
-```cut -d";" -f2,3,5 schopnosti.txt```
-
-
-6. Kolik je typů kouzel (sloupec 3). 
-
-``` cut -d";" -f3 schopnosti.txt | sort | uniq```
-``` cut -d";" -f3 schopnosti.txt | sort | uniq -c```
-
-7. Spoj soubory `postavy.txt` a `schopnosti.txt` použij středník `;` jako oddělovač
-
-```paste -d"," postavy.txt schopnosti.txt```
-
-7. Pojďme odstranit některé duplicitní sloupce. Spojíme `postavy.txt` a spojíme je se sloupci 2,3,a 4 ze `schopnosti.txt`
-
-```paste -d"," postavy.txt <(cut -d';' -f2,3,4 schopnosti.txt)```
-
-8. Spojme podle oba soubory podle 1. klíče (ID) v každém souboru
-```join -t';' -1 1 -2 1 postavy.txt schopnosti.txt```
-
-9. Spojme podle oba soubory podle názvu postav 
-
-```join -t';' -1 2 -2 5 postavy.txt schopnosti.txt```
-
-... případně lze zkombinovat s awk 
+## 4) Vypište pouze názvy postav (sloupec 2)
+```bash
+cut -d";" -f2 postavy.txt
 ```
+
+---
+
+## 5) Ze souboru `schopnosti.txt` vypište pouze názvy postav (sloupec 5) bez duplicit
+```bash
+cut -d";" -f5 schopnosti.txt | sort | uniq
+```
+
+---
+
+## 6) Ze souboru `schopnosti.txt` vypište názvy postav, schopnost a typ (sloupce 2, 3 a 5)
+```bash
+cut -d";" -f2,3,5 schopnosti.txt
+```
+
+---
+
+## 7) Kolik je typů kouzel (sloupec 3)
+```bash
+cut -d";" -f3 schopnosti.txt | sort | uniq
+```
+
+```bash
+cut -d";" -f3 schopnosti.txt | sort | uniq -c
+```
+
+---
+
+## 8) Spoj soubory `postavy.txt` a `schopnosti.txt` (středník `;` jako oddělovač)
+```bash
+paste -d";" postavy.txt schopnosti.txt
+```
+
+---
+
+## 9) Spojíme `postavy.txt` a vybereme jen sloupce 2, 3 a 4 ze `schopnosti.txt`
+```bash
+paste -d";" postavy.txt <(cut -d';' -f2,3,4 schopnosti.txt)
+```
+
+---
+
+## 10) Spojme oba soubory podle ID (1. klíč v obou souborech)
+```bash
+join -t';' -1 1 -2 1 postavy.txt schopnosti.txt
+```
+
+---
+
+## 11) Spojme oba soubory podle názvu postav
+```bash
+join -t';' -1 2 -2 5 postavy.txt schopnosti.txt
+```
+
+### 11a) Spojení + sloučení schopností do jednoho řádku (awk)
+```bash
 join -t';' -1 2 -2 5 postavy.txt schopnosti.txt |
 awk -F';' '
 {
@@ -178,22 +217,43 @@ END {
     print k ";" data[k]
 }'
 ```
-10. Vypište názvy postav, nahraďte podtřžítko `_` za mezeru:
 
-``` cut -d";" -f2 postavy.txt | tr '_' ' '```
+---
 
-11. V názvu postav, nahraďte podtřžítko `_` za mezeru a vypište název postavy velkými písmeny :
+## 12) Vypište názvy postav a nahraďte podtržítko `_` mezerou
+```bash
+cut -d";" -f2 postavy.txt | tr '_' ' '
+```
 
-```cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]'```
+---
 
-12. případně lze zkombinovat s dalšími příkyazy:
+## 13) Název postavy nahraďte podtržítko `_` mezerou a přepište na VELKÁ písmena
+```bash
+cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]'
 
-```join -t";" -1 2 -2 5 postavy.txt schopnosti.txt | tr "_" " "```
+//případně pomocí awk
+awk -F';' '{gsub("_"," ",$2); print toupper($2)}' postavy.txt
 
+```
 
+---
 
+## 14) Spojení + nahrazení podtržítek ve výstupu
+```bash
+join -t";" -1 2 -2 5 postavy.txt schopnosti.txt | tr "_" " "
+```
+---
 
+## 15) Ukázka kombinace join/paste s dalšími příkazy. 
+```bash
+paste -d";" \
+  <(cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]') \
+  <(cut -d";" -f2,3 schopnosti.txt)
 
+join -t";" -1 2 -2 5 \
+  <(awk -F';' '{gsub("_"," ",$2); $2=toupper($2); print}' postavy.txt | sort -t";" -k2) \
+  <(awk -F';' '{gsub("_"," ",$5); $5=toupper($5); print}' schopnosti.txt | sort -t";" -k5)
+```
 
 
 
