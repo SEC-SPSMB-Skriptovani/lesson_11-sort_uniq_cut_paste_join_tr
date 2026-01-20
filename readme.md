@@ -182,7 +182,7 @@ END {
 
 ``` cut -d";" -f2 postavy.txt | tr '_' ' '```
 
-11. Vypište názvy postav, nahraďte podtřžítko `_` za mezeru a vypište název postavy velkými písmeny :
+11. V názvu postav, nahraďte podtřžítko `_` za mezeru a vypište název postavy velkými písmeny :
 
 ```cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]'```
 
