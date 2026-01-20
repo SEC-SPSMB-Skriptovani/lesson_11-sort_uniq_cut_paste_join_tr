@@ -246,6 +246,8 @@ join -t";" -1 2 -2 5 postavy.txt schopnosti.txt | tr "_" " "
 
 ## 15) Ukázka kombinace join/paste s dalšími příkazy. 
 ```bash
+paste -d" " <(echo "Hello") <(echo "World")
+
 paste -d";" 
   <(cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]') \
   <(cut -d";" -f2,3 schopnosti.txt)
