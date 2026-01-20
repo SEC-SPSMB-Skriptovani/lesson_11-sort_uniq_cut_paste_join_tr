@@ -91,7 +91,7 @@ Příklad:
 
 `join -t';' -1 1 -2 1 a.txt b.txt`
 
-## tr – překlad znaků
+## tr – překlad znaků
 
 Nahrazuje nebo maže jednotlivé znaky.
 
@@ -105,9 +105,10 @@ Nejpoužívanější přepínače:
 ```
 
 Příklad:
-`tr 'a-z' 'A-Z'`
 
+`tr 'a-z' 'A-Z'`
 `tr -d '_'`
+
 ----
 # Cvičení
 1. Seřaďte `postavy.txt` podle abecedy 
@@ -151,8 +152,43 @@ sort -t';' -k4 -n -r schopnosti.txt
 
 ```paste -d"," postavy.txt <(cut -d';' -f2,3,4 schopnosti.txt)```
 
-8 Spojme podle obasoubory podle 1. klíče (ID) v každém souboru
-join -t';' -1 1 -2 1 postavy.txt schopnosti.txt
+8. Spojme podle oba soubory podle 1. klíče (ID) v každém souboru
+```join -t';' -1 1 -2 1 postavy.txt schopnosti.txt```
+
+9. Spojme podle oba soubory podle názvu postav 
+
+```join -t';' -1 2 -2 5 postavy.txt schopnosti.txt```
+
+... případně lze zkombinovat s awk 
+```
+join -t';' -1 2 -2 5 postavy.txt schopnosti.txt |
+awk -F';' '
+{
+  key = $1 ";" $2 ";" $3
+  rest = $4 ";" $5 ";" $6 ";" $7
+  if (seen[key] == 0) {
+    data[key] = rest
+    seen[key] = 1
+  } else {
+    data[key] = data[key] ";" rest
+  }
+}
+END {
+  for (k in data)
+    print k ";" data[k]
+}'
+```
+10. Vypište názvy postav, nahraďte podtřžítko `_` za mezeru:
+
+``` cut -d";" -f2 postavy.txt | tr '_' ' '```
+
+11. Vypište názvy postav, nahraďte podtřžítko `_` za mezeru a vypište název postavy velkými písmeny :
+
+```cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]'```
+
+12. případně lze zkombinovat s dalšími příkyazy:
+
+```join -t";" -1 2 -2 5 postavy.txt schopnosti.txt | tr "_" " "```
 
 
 
