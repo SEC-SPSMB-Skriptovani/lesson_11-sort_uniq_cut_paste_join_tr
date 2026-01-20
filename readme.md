@@ -97,17 +97,31 @@ Nahrazuje nebo maže jednotlivé znaky.
 
 Nejpoužívanější přepínače:
 ``` bash
-[:lower:] / [:upper:] … třídy znaků
+[:lower:] / [:upper:] … třídy znaků lze použít 'a-z' 'A-Z' (nefunguje česká diaritika)
 
+[:alpha:]	písmena (A–Z, a–z)
+[:digit:]	číslice (0–9)	
+[:alnum:]	písmena + číslice	
+[:space:]	bílé znaky (mezera, tab, newline)	
+[:blank:]	mezera nebo tab
+[:punct:]	interpunkce
+[:print:]	tisknutelné znaky (bez control)
+[:graph:]	tisknutelné znaky bez mezery
+[:cntrl:]	řídicí znaky (např. newline, tab, escape)
+[:xdigit:]	hexadecimální číslice (0–9, A–F, a–f)
+
+-c … znamená complement (komplement, opak)
 -d … maže znaky
-
 -s … sloučí opakující se znaky
 ```
 
 Příklad:
 
-`tr 'a-z' 'A-Z'`
-`tr -d '_'`
+`tr 'a-z' 'A-Z' # nahradí všechny malá písmana a-z za VELKÁ`
+
+`tr -d '_' # smaže všechny podtržítka`
+
+`tr -cd [:digit:] # smaže vše mimo číslic`
 
 ----
 # Cvičení
