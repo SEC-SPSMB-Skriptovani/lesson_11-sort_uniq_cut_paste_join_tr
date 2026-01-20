@@ -246,11 +246,11 @@ join -t";" -1 2 -2 5 postavy.txt schopnosti.txt | tr "_" " "
 
 ## 15) Ukázka kombinace join/paste s dalšími příkazy. 
 ```bash
-paste -d";" \
+paste -d";" 
   <(cut -d";" -f2 postavy.txt | tr '_' ' ' | tr '[:lower:]' '[:upper:]') \
   <(cut -d";" -f2,3 schopnosti.txt)
 
-join -t";" -1 2 -2 5 \
+join -t";" -1 2 -2 5 
   <(awk -F';' '{gsub("_"," ",$2); $2=toupper($2); print}' postavy.txt | sort -t";" -k2) \
   <(awk -F';' '{gsub("_"," ",$5); $5=toupper($5); print}' schopnosti.txt | sort -t";" -k5)
 ```
