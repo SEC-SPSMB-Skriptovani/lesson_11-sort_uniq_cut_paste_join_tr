@@ -128,13 +128,15 @@ sort -t';' -k4 -n -r schopnosti.txt
 
 ```cut -d";" -f5 postavy.txt```
 
-4. vypište pouze názvy postav, schopnost a typ (sloupece 2,3 a 5)
+
+4. Ze souboru `schopnosti.txt` vypište pouze názvy postav (sloupec 5) bez duplicit
+
+```cut -d";" -f5 schopnosti.txt | uniq```
+
+5. Ze souboru `schopnosti.txt` vypište  názvy postav schopnost a typ (sloupece 2,3 a 5)
 
 ```cut -d";" -f2,3,5 schopnosti.txt```
 
-5. vypište pouze názvy postav (sloupec 5) bez duplicit
-
-```cut -d";" -f5 postavy.txt | uniq```
 
 6. Kolik je typů kouzel (sloupec 3). 
 
@@ -148,6 +150,10 @@ sort -t';' -k4 -n -r schopnosti.txt
 7. Pojďme odstranit některé duplicitní sloupce. Spojíme `postavy.txt` a spojíme je se sloupci 2,3,a 4 ze `schopnosti.txt`
 
 ```paste -d"," postavy.txt <(cut -d';' -f2,3,4 schopnosti.txt)```
+
+8 Spojme podle obasoubory podle 1. klíče (ID) v každém souboru
+join -t';' -1 1 -2 1 postavy.txt schopnosti.txt
+
 
 
 
