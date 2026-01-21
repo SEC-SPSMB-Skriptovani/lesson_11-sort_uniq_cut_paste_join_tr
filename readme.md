@@ -177,10 +177,6 @@ cut -d";" -f2,3,5 schopnosti.txt
 
 ## 7) Kolik je typů kouzel (sloupec 3)
 ```bash
-cut -d";" -f3 schopnosti.txt | sort | uniq
-```
-
-```bash
 cut -d";" -f3 schopnosti.txt | sort | uniq -c
 ```
 
