@@ -126,17 +126,17 @@ Příklad:
 ----
 # Cvičení
 
-## 1) Seřaďte `postavy.txt` podle abecedy
+## 1) Seřaďte `schopnosti.txt` podle abecedy
 ```bash
-sort postavy.txt
+sort schopnosti.txt
 ```
 ➡️ Seřadí celý soubor podle prvního znaku na řádku (ID jako text).
 
 ---
 
-## 2) Seřaďte podle jména postavy (2. sloupec)
+## 2) Seřaďte podle jména postavy (2. sloupec) souobor `schopnosti.txt`
 ```bash
-sort -t';' -k2 postavy.txt
+sort -t';' -k2 schopnosti.txt
 ```
 
 ---
